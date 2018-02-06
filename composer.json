@@ -3,9 +3,9 @@
     "license": "proprietary",
     "type": "project",
     "autoload": {
-        "psr-4": {
-            "CoreBundle\\": "src/CoreBundle",
-            "AdminBundle\\": "src/AdminBundle"
+        "psr-0": {
+            "": "src/",
+            "Application": "app/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -26,6 +26,7 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "sonata-project/admin-bundle": "^3.31",
         "sonata-project/doctrine-orm-admin-bundle": "^3.4",
+        "sonata-project/media-bundle": "^3.10",
         "symfony/monolog-bundle": "^3.0.2",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.*",

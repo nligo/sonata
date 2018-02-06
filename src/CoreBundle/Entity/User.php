@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\UserRepository")
+ * @ORM\Entity
  *
  * @UniqueEntity("username")
  */
@@ -76,7 +76,10 @@ class User extends Base implements UserInterface
 
     public function __toString()
     {
-        return $this->username;
+        if(is_null($this->getUsername())) {
+            return 'NULL';
+        }
+        return $this->getUsername();
     }
     public function setRole($role)
     {

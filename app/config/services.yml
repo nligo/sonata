@@ -8,9 +8,3 @@ services:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
     # ...
-    admin.category:
-        class: AdminBundle\Admin\CategoryAdmin
-        arguments: [~, CoreBundle\Entity\Category, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Category }
-        public: true

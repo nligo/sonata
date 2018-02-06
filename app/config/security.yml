@@ -1,11 +1,16 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
-
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        CoreBundle\Entity\AdminUser:
+            algorithm: bcrypt
+        CoreBundle\Entity\User:
+            algorithm: bcrypt
     providers:
-        in_memory:
-            memory: ~
+        admin_user:
+            entity: { class: CoreBundle\Entity\AdminUser, property: username }
+        user:
+            entity: { class: CoreBundle\Entity\User, property: username }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

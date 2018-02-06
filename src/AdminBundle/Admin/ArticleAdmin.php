@@ -7,12 +7,22 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CategoryAdmin extends AbstractAdmin
+class ArticleAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('articles', 'sonata_type_model', array(
+        $formMapper->add('content', 'text');
+        $formMapper->add('author');
+        $formMapper->add('type');
+        $formMapper->add('isUp');
+        $formMapper->add('isSupport');
+        $formMapper->add('cover', 'entity',[
+            'class' => 'Application\Sonata\MediaBundle\Entity\Media'
+        ]);
+
+        $formMapper->add('releaseAt','datetime');
+        $formMapper->add('categories', 'sonata_type_model', array(
             'required' => false,
             'multiple' => true,
             'btn_add' => false,

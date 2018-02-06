@@ -2,3 +2,30 @@ services:
 #    core.example:
 #        class: CoreBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    admin.category:
+        class: AdminBundle\Admin\CategoryAdmin
+        arguments: [~, CoreBundle\Entity\Category, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "Article"
+              label: "Category"
+        public: true
+    admin.article:
+        class: AdminBundle\Admin\ArticleAdmin
+        arguments: [~, CoreBundle\Entity\Article, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "Article"
+              label: "Article"
+        public: true
+    admin.user:
+        class: AdminBundle\Admin\UserAdmin
+        arguments: [~, CoreBundle\Entity\User, ~]
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "User"
+              label: "User"
+        public: true

@@ -7,25 +7,21 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CategoryAdmin extends AbstractAdmin
+class UserAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', 'text');
-        $formMapper->add('articles', 'sonata_type_model', array(
-            'required' => false,
-            'multiple' => true,
-            'btn_add' => false,
-        ));
+        $formMapper->add('username','text');
+        $formMapper->add('phone','text');
+        $formMapper->add('email','email');
+        $formMapper->add('password','password');
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name');
     }
 }

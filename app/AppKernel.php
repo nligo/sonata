@@ -23,9 +23,12 @@ class AppKernel extends Kernel
             // And finally
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new CoreBundle\CoreBundle(),
             new AdminBundle\AdminBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -2,6 +2,7 @@
 
 namespace CoreBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -60,6 +61,28 @@ class Article extends Base
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media",cascade={"persist"})
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
+     */
+    private $cover;
+
+    /**
+     * @return mixed
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param mixed $cover
+     */
+    public function setCover(Media $cover)
+    {
+        $this->cover = $cover;
+    }
 
     /**
      * @return mixed
@@ -229,5 +252,4 @@ class Article extends Base
     {
         return $this->comments;
     }
-
 }
