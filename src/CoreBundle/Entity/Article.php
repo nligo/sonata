@@ -5,8 +5,6 @@ namespace CoreBundle\Entity;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-
 /**
  * @ORM\Entity
  * @ORM\Table(options={"comment": "文章内容表"})
@@ -56,10 +54,32 @@ class Article extends Base
     private $comments;
 
     /**
-     * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media",cascade={"persist"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
      */
     private $cover;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    private $author;
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setAuthor(\Application\Sonata\UserBundle\Entity\User $author)
+    {
+        $this->author = $author;
+    }
 
     /**
      * @return mixed

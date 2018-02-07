@@ -97,6 +97,13 @@ class UserAdmin extends AbstractAdmin
                 ->add('impersonating', 'string', array('template' => 'SonataUserBundle:Admin:Field/impersonating.html.twig'))
             ;
         }
+        $listMapper->add('_action', null, [
+            'actions' => [
+                'show' => [],
+                'edit' => [],
+                'delete' => [],
+            ],
+        ]);
     }
 
     /**

@@ -1,6 +1,8 @@
 sonata_user:
     security_acl:           false
     manager_type: orm # Can be orm for mongodb
+    impersonating:
+        route: sonata_admin_dashboard
     table:
         user_group: "user_group"
     class:                  # Entity Classes
