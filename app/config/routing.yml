@@ -1,3 +1,7 @@
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
     prefix: /admin
@@ -19,12 +23,19 @@ sonata_media_pixlr:
     resource: '@SonataMediaBundle/Resources/config/routing/pixlr.xml'
     prefix: /admin/media
 
+sonata_user_security:
+    resource: "@SonataUserBundle/Resources/config/routing/admin_security.xml"
+
+sonata_user_resetting:
+    resource: "@SonataUserBundle/Resources/config/routing/admin_resetting.xml"
+    prefix: /resetting
+
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin
 
 core:
     resource: "@CoreBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin

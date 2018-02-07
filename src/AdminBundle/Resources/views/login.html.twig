@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>登 录</title>
+    <link href="{{ asset('libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('libs/font-Awesome/css/font-awesome.min.css') }}">
+
+    <link href="{{ asset('adminAssets/css/login.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container login-box">
+    <div class="row justify-content-center">
+        <div class="col col-sm-7 col-md-2 col-lg-5 col-xl-4">
+            <form id="loginform" method="post" action="{{ path('admin_login') }}">
+                <h1 class="text-center text-dark">
+                    <i class="icon-cloud icon-4x" aria-hidden="true"></i>
+                </h1>
+                <h1 class="text-center text-dark mb-5">
+                    {{ site_name }}
+                </h1>
+                {% if error %}
+                <div class="row clearfix">
+                    <div class="col-md-12 column">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+                                {{ error.message|trans }}
+
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control form-control-lg" name="_username" maxlength="16"
+                               placeholder="用户名" tabindex="1"  value="{{ username }}" autofocus="autofocus">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                        </div>
+                        <input type="password" class="form-control form-control-lg" name="_password" maxlength="16"
+                               placeholder="密码" tabindex="2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-login btn-lg btn-block" tabindex="3">登&nbsp;录</button>
+                </div>
+                <div class="form-group">
+                    <p class="text-center text-muted">
+                        {{ admin_domain }}
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -55,13 +55,6 @@ class Article extends Base
      */
     private $comments;
 
-
-    /**
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
-     */
-    private $author;
-
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media",cascade={"persist"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id")
@@ -82,22 +75,6 @@ class Article extends Base
     public function setCover(Media $cover)
     {
         $this->cover = $cover;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setAuthor(User $author)
-    {
-        $this->author = $author;
     }
 
 

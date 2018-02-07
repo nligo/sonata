@@ -1,0 +1,15 @@
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.block.service.text:
+        sonata.page.block.children_pages:
+        sonata.formatter.block.formatter:
+    http_cache:
+        handler: sonata.block.cache.handler.noop    # no cache alteration
+        handler: sonata.block.cache.handler.default # default value
+        listener: true

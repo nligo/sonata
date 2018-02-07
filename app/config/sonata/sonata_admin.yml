@@ -1,0 +1,27 @@
+sonata_admin:
+    security:
+
+    options:
+        lock_protection: false
+    title:      '%site_name%'
+    dashboard:
+        blocks:
+            -
+                class:    col-lg-12 col-xs-8          # twitter bootstrap responsive code
+                position: center                        # zone in the dashboard
+                type:     sonata.admin.block.admin_list   # block id
+    options:
+        html5_validate:    true     # enable or disable html5 form validation
+        confirm_exit:      true     # enable or disable a confirmation before navigating away
+        use_select2:       true     # enable or disable usage of the Select2 jQuery library
+        use_icheck:        true     # enable or disable usage of the iCheck library
+        use_bootlint:      false    # enable or disable usage of Bootlint
+        use_stickyforms:   true     # enable or disable the floating buttons
+        form_type:         standard # can also be 'horizontal'
+
+    templates:
+        edit:              '@SonataAdmin/CRUD/edit.html.twig'
+        tab_menu_template: '@SonataAdmin/Core/tab_menu_template.html.twig'
+    breadcrumbs:
+       # use this to change the default route used to generate the link to the parent object inside a breadcrumb, when in a child admin
+       child_admin_route: edit

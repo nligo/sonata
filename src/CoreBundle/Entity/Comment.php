@@ -37,14 +37,6 @@ class Comment extends Base
      **/
     private $parent;
 
-    /**
-     * 一个评论对应一用户.
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    private $user;
-
     public function __toString()
     {
         return $this->content;
@@ -90,13 +82,4 @@ class Comment extends Base
         $this->parent = $comment;
     }
 
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-    }
 }

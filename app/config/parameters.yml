@@ -7,6 +7,8 @@ parameters:
     database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: 'coffey@weeya.net'
+    mailer_password: 'Gg825482785.'
     secret: ThisTokenIsNotSoSecretChangeIt
+    site_name: 飞羽科技
+    admin_domain: admin.sonata.com

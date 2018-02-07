@@ -24,10 +24,16 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new CoreBundle\CoreBundle(),
             new AdminBundle\AdminBundle(),
-            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
 
         );
 

@@ -1,0 +1,13 @@
+body
+{
+    background:#C7EDCC;
+}
+.login-box
+{
+    margin-top: 10vh;
+}
+.btn-login {
+    color: #fff;
+    background-color: #343A40;
+    border-color: #343A40;
+}
