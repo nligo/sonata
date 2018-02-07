@@ -12,18 +12,14 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class ArticleAdmin extends AbstractAdmin
 {
 
-    protected function configureRoutes(RouteCollection $collection)
+    public function getDashboardActions()
     {
-
-    }
-
-    public function getDashboardActions() {
-        $actions = parent::getDashboardActions();
         $checker = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
+        $actions = parent::getDashboardActions();
+
         if (!$checker->isGranted('ROLE_AUTHOR')) {
             unset($actions['create']);
         }
-
         return $actions;
     }
 
