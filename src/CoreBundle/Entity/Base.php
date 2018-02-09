@@ -24,6 +24,11 @@ class Base
     private $id;
 
     /**
+     * @ORM\Column(type="boolean",name="status",nullable=false, options={"comment": "是否博主推荐:0为否，1为是"})
+     */
+    private $status = true;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -42,6 +47,9 @@ class Base
         if (!$this->createdAt) {
             $this->createdAt = new \DateTime();
             $this->updatedAt = new \DateTime();
+        }
+        if (!$this->getStatus()) {
+            $this->setStatus(true);
         }
 
     }
@@ -102,5 +110,15 @@ class Base
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
     }
 }

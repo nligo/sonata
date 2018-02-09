@@ -2,16 +2,15 @@
 
 namespace AdminBundle\Admin;
 
+use CoreBundle\Entity\Category;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 class ArticleAdmin extends AbstractAdmin
 {
-
     public function getDashboardActions()
     {
         $checker = $this->getConfigurationPool()->getContainer()->get('security.authorization_checker');
@@ -20,6 +19,7 @@ class ArticleAdmin extends AbstractAdmin
         if (!$checker->isGranted('ROLE_AUTHOR')) {
             unset($actions['create']);
         }
+
         return $actions;
     }
 
@@ -31,7 +31,7 @@ class ArticleAdmin extends AbstractAdmin
         if ($checker->isGranted('ROLE_AUTHOR')) {
             $owner = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
             $query->andWhere(
-                $query->expr()->eq($query->getRootAlias() . '.author', ':author')
+                $query->expr()->eq($query->getRootAlias().'.author', ':author')
             );
             $query->setParameter('author', $owner);
         }
@@ -42,7 +42,7 @@ class ArticleAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('content','ckeditor',[
+        $formMapper->add('content', 'ckeditor', [
             'config_name' => 'article',
         ]);
         $formMapper->add('type');
@@ -53,15 +53,16 @@ class ArticleAdmin extends AbstractAdmin
         ]);
 
         $formMapper->add('releaseAt', 'datetime');
+        $entity = new Category();
+        $query = $this->modelManager->getEntityManager($entity)->createQuery('SELECT s FROM CoreBundle\Entity\Category s WHERE s.owner =:owner ORDER BY s.createdAt ASC');
+        $owner = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+        $query->setParameter('owner', $owner->getId());
         $formMapper->add('categories', 'sonata_type_model', array(
             'required' => false,
             'multiple' => true,
+            'query' => $query,
             'btn_add' => false,
         ));
-
-
-
-
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -78,7 +79,7 @@ class ArticleAdmin extends AbstractAdmin
         $listMapper->add('type');
         $listMapper->add('isUp');
         $listMapper->add('isSupport');
-        $listMapper->add('comments');
+        $listMapper->add('commentTotal');
 
         $actions = [
             'show' => [],
@@ -97,7 +98,7 @@ class ArticleAdmin extends AbstractAdmin
         $showMapper
             ->add('name')
             ->add('author')
-            ->add('cover','image')
+            ->add('cover', 'image')
             ->add('content', 'html')
             ->add('releaseAt')
             ->add('type')

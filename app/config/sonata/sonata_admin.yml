@@ -10,16 +10,16 @@ sonata_admin:
                 class:    col-lg-12 col-xs-8          # twitter bootstrap responsive code
                 position: center                        # zone in the dashboard
                 type:     sonata.admin.block.admin_list   # block id
-                settings:
-                    groups: [app.admin.group.article]
-        groups:
-            app.admin.group.article:
-                label: 'Article'
-                label_catalogue: CoreBundle
-                items:
-                    - admin.category
-                    - admin.article
-                roles: [ ROLE_ADMIN, ROLE_AUTHOR ]
+#                settings:
+#                    groups: [app.admin.group.article]
+#        groups:
+#            app.admin.group.article:
+#                label: 'Article'
+#                label_catalogue: CoreBundle
+#                items:
+#                    - admin.category
+#                    - admin.article
+#                roles: [ ROLE_ADMIN, ROLE_AUTHOR ]
     options:
         html5_validate:    true     # enable or disable html5 form validation
         confirm_exit:      true     # enable or disable a confirmation before navigating away

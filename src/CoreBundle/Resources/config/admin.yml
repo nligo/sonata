@@ -30,3 +30,16 @@ services:
             - CoreBundle\Entity\Article
             - ~
         public: true
+    admin.comment:
+        class: AdminBundle\Admin\CommentAdmin
+        tags:
+            - name: sonata.admin
+              manager_type: orm
+              group: "app.admin.group.article"
+              label: "Comment"
+              label_catalogue: "CoreBundle"
+        arguments:
+            - ~
+            - CoreBundle\Entity\Comment
+            - ~
+        public: true

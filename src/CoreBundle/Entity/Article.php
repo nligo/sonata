@@ -249,4 +249,8 @@ class Article extends Base
     {
         return $this->comments;
     }
+
+    public function getCommentTotal(){
+        return $this->getComments()->count();
+    }
 }

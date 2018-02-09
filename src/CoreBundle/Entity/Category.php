@@ -31,6 +31,29 @@ class Category extends Base
      **/
     protected $parent;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     */
+    protected $owner;
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setOwner(\Application\Sonata\UserBundle\Entity\User $owner)
+    {
+        $this->owner = $owner;
+    }
+
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();

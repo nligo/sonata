@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment extends Base
 {
     /**
-     * 一个评论对应一篇文章.
+     * 多个评论对应一篇文章.
      *
      * @ORM\ManyToOne(targetEntity="Article",inversedBy="comments")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
@@ -36,6 +36,29 @@ class Comment extends Base
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      **/
     private $parent;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id")
+     */
+    protected $owner;
+
+    /**
+     * @return mixed
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setOwner(\Application\Sonata\UserBundle\Entity\User $owner)
+    {
+        $this->owner = $owner;
+    }
+
 
     public function __toString()
     {
