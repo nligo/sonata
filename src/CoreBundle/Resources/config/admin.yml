@@ -43,3 +43,25 @@ services:
             - CoreBundle\Entity\Comment
             - ~
         public: true
+
+    admin.user:
+        class: Application\Sonata\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "app.admin.group.user", label: "UserAdmin" }
+        arguments:
+            - ~
+            - Application\Sonata\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [SonataAdminBundle]]
+
+    admin.group:
+        class: Application\Sonata\UserBundle\Admin\GroupAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "app.admin.group.user", label: "Group" }
+        arguments:
+            - ~
+            - Application\Sonata\UserBundle\Entity\Group
+            - ~
+        calls:
+            - [ setTranslationDomain, [SonataAdminBundle]]

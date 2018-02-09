@@ -24,22 +24,6 @@ security:
             security: false
 
 # -> custom firewall for the admin area of the URL
-        admin:
-            switch_user: true
-            pattern:            /admin(.*)
-            context:            user
-            form_login:
-                provider:       fos_userbundle
-                login_path:     /login
-                use_forward:    false
-                check_path:     /admin/login_check
-                failure_path:   null
-                default_target_path: /admin
-            logout:
-                path:           /admin/logout
-                target: /login
-            anonymous:          true
-
         main:
             pattern:             .*
             context:             user
@@ -49,7 +33,12 @@ security:
                 use_forward:    false
                 check_path:     /login_check
                 failure_path:   null
-            logout:             true
+ # 登录成功后的跳转选项（下文有解释）
+                always_use_default_target_path: true
+                default_target_path:            /admin
+            logout:
+                path: /logout
+                target: /login
             anonymous:          true
     access_control:
         # URL of FOSUserBundle which need to be available to anonymous users

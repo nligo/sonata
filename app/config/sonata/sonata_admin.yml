@@ -12,14 +12,21 @@ sonata_admin:
                 type:     sonata.admin.block.admin_list   # block id
 #                settings:
 #                    groups: [app.admin.group.article]
-#        groups:
-#            app.admin.group.article:
-#                label: 'Article'
-#                label_catalogue: CoreBundle
-#                items:
-#                    - admin.category
-#                    - admin.article
-#                roles: [ ROLE_ADMIN, ROLE_AUTHOR ]
+        groups:
+            app.admin.group.article:
+                label: 'Article'
+                label_catalogue: CoreBundle
+                items:
+                    - admin.category
+                    - admin.article
+                    - admin.comment
+                roles: [ ROLE_ADMIN, ROLE_AUTHOR ]
+            app.admin.group.user:
+                label: 'User'
+                label_catalogue: Application\Sonata\UserBundle
+                items:
+                    - admin.group
+                roles: [ ROLE_SUPER_ADMIN ]
     options:
         html5_validate:    true     # enable or disable html5 form validation
         confirm_exit:      true     # enable or disable a confirmation before navigating away
