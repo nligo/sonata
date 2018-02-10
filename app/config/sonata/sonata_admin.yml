@@ -1,11 +1,19 @@
 sonata_admin:
     security:
+        handler: sonata.admin.security.handler.role
+        # role security information
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
+
         handler: sonata.admin.security.handler.acl
-
-        role_admin: ROLE_ADMIN
-        role_super_admin: ROLE_SUPER_ADMIN
-
-        # acl security information
+            # acl security information
         information:
             GUEST:    [VIEW, LIST]
             STAFF:    [EDIT, LIST, CREATE]
